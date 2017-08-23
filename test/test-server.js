@@ -45,7 +45,7 @@ describe('Recipes', function() {
     // and returns a Promise, so we just return it.
     return chai.request(app)
       .get('/recipes')
-      .then(function(res) {
+      .then( res => {
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('array');
@@ -55,7 +55,7 @@ describe('Recipes', function() {
         // each item should be an object with key/value pairs
         // for `id`, `name` and `checked`.
         const expectedKeys = ['id', 'name', 'ingredients'];
-        res.body.forEach(function(item) {
+        res.body.forEach( (item) => {
           item.should.be.a('object');
           item.should.include.keys(expectedKeys);
         });
